@@ -70,6 +70,6 @@ final class UserRepository implements Readable, Writetable
 
 	public function delete(int $id): array
 	{
-		return [];
+		return DB::select('CALL delete_user('.$id.')');
 	}
 }

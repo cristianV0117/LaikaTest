@@ -45,6 +45,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->when(\App\Http\Controllers\Users\UpdateController::class)
             ->needs(\App\Helpers\Response::class)
             ->give(\App\Helpers\JsonResponse::class);
+        $this->app->when(\App\Http\Controllers\Users\DeleteController::class)
+            ->needs(\App\Helpers\Response::class)
+            ->give(\App\Helpers\JsonResponse::class);
         // USERS REPOSITORY//
         $this->app->when(\App\Http\Controllers\Users\IndexController::class)
                 ->needs(\App\Repositories\Readable::class)
@@ -58,7 +61,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->when(\App\Http\Controllers\Users\UpdateController::class)
                 ->needs(\App\Repositories\Writetable::class)
                 ->give(\App\Repositories\UserRepository::class);
-        $this->app->when(\App\Http\Controllers\Users\DestroyController::class)
+        $this->app->when(\App\Http\Controllers\Users\DeleteController::class)
                 ->needs(\App\Repositories\Writetable::class)
                 ->give(\App\Repositories\UserRepository::class);
     }

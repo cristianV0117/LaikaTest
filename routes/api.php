@@ -11,7 +11,8 @@ use App\Http\Controllers\Users\{
     ShowController  as UsersShowController,
     IndexController as UsersIndexController,
     StoreController,
-    UpdateController
+    UpdateController,
+    DeleteController
 };
 
 /*
@@ -49,5 +50,6 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('', StoreController::class);
         Route::get('/{id}', UsersShowController::class);
         Route::put('/{id}', UpdateController::class);
+        Route::delete('/{id}', DeleteController::class);
     });
 });
