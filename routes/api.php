@@ -8,6 +8,7 @@ use App\Http\Controllers\Countries\{
     ShowController
 };
 use App\Http\Controllers\Users\{
+    IndexController as UsersIndexController,
     StoreController
 };
 
@@ -42,6 +43,7 @@ Route::group(['prefix' => 'v1'], function () {
     });
 
     Route::group(['prefix' => 'users'], function () {
+        Route::get('', UsersIndexController::class);
         Route::post('', StoreController::class);
     });
 });

@@ -3,9 +3,32 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Helpers\Response;
+use App\Repositories\Readable;
 
-class IndexController extends Controller
+final class IndexController extends Controller
 {
-    //
+    private $response;
+    private $dependencies;
+    private $repository;
+
+    public function __construct(Response $response, Readable $repository)
+    {
+        $this->response = $response;
+        $this->repository = $repository;
+        $this->dependencies = [
+            "current" => 'users/'
+        ];
+    }
+
+    public function __invoke()
+    {
+        return response()->json($this->response->response(
+            200,
+            false, 
+            $this->repository->getAll(),
+            $this->dependencies,
+            null
+        ), 200);
+    }
 }

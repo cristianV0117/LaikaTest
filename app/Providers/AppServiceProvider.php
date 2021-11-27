@@ -33,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
             ->needs(\App\Repositories\Readable::class)
             ->give(\App\Repositories\CountryRepository::class);
         // USERS RESPONSE //
+        $this->app->when(\App\Http\Controllers\Users\IndexController::class)
+            ->needs(\App\Helpers\Response::class)
+            ->give(\App\Helpers\JsonResponse::class);
         $this->app->when(\App\Http\Controllers\Users\StoreController::class)
             ->needs(\App\Helpers\Response::class)
             ->give(\App\Helpers\JsonResponse::class);
