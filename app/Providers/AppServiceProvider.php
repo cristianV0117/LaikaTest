@@ -17,10 +17,14 @@ class AppServiceProvider extends ServiceProvider
             ->needs(\App\Helpers\Response::class)
             ->give(\App\Helpers\JsonResponse::class);
 
-        // COUNTRIES //
+        // COUNTRIES RESPONSE //
         $this->app->when(\App\Http\Controllers\Countries\IndexController::class)
             ->needs(\App\Helpers\Response::class)
             ->give(\App\Helpers\JsonResponse::class);
+        // COUNTRIES REPOSITORY //
+        $this->app->when(\App\Http\Controllers\Countries\IndexController::class)
+            ->needs(\App\Repositories\Readable::class)
+            ->give(\App\Repositories\CountrieRepository::class);
     }
 
     /**
