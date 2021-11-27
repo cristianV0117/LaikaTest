@@ -42,6 +42,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->when(\App\Http\Controllers\Users\StoreController::class)
             ->needs(\App\Helpers\Response::class)
             ->give(\App\Helpers\JsonResponse::class);
+        $this->app->when(\App\Http\Controllers\Users\UpdateController::class)
+            ->needs(\App\Helpers\Response::class)
+            ->give(\App\Helpers\JsonResponse::class);
         // USERS REPOSITORY//
         $this->app->when(\App\Http\Controllers\Users\IndexController::class)
                 ->needs(\App\Repositories\Readable::class)

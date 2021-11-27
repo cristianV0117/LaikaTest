@@ -46,7 +46,26 @@ final class UserRepository implements Readable, Writetable
 
 	public function update(Request $request, int $id): array
 	{
-		return [];
+		$data = $request->all();
+		$user = DB::select('CALL get_one_user('.$id.')');
+		$response = DB::select('CALL update_user (?,?,?,?,?,?,?,?,?,?)', [
+			(!empty($data["user_name"])) ? $data["user_name"] : $user[0]->user_name,
+			(!empty($data["first_name"])) ? $data["first_name"] : $user[0]->first_name,
+			(!empty($data["second_name"])) ? $data["second_name"] : $user[0]->second_name,
+			(!empty($data["first_last_name"])) ? $data["first_last_name"] : $user[0]->first_last_name,
+			(!empty($data["second_last_name"])) ? $data["second_last_name"] : $user[0]->second_last_name,
+			(!empty($data["email"])) ? $data["email"] : $user[0]->email,
+			(!empty($data["cellphone"])) ? $data["cellphone"] : $user[0]->cellphone,
+			(!empty($data["country_id"])) ? $data["country_id"] : $user[0]->country_id,
+			Carbon::now(),
+			$id
+		]);
+
+		if (!is_array($response)) {
+			throw new UserException("Ha ocurrido un error", 500);
+		}
+
+		return $response;
 	}
 
 	public function delete(int $id): array

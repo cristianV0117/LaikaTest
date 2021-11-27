@@ -6,7 +6,7 @@ use App\Exceptions\Users\UserException;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 
-class PostUserRequest extends FormRequest
+class PutUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,15 +26,14 @@ class PostUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_name' => 'required|max:25',
-            'first_name' => 'required|max:45',
+            'user_name' => 'nullable|max:25',
+            'first_name' => 'nullable|max:45',
             'second_name' => 'nullable|max:45',
-            'first_last_name' => 'required|max:45',
+            'first_last_name' => 'nullable|max:45',
             'second_last_name' => 'nullable|max:45',
-            'email' => 'required|email|unique:users',
+            'email' => 'nullable|email',
             'cellphone' => 'nullable|max:12',
-            'password' => 'required|max:125',
-            'country_id' => 'required|integer'    
+            'country_id' => 'nullable|integer'
         ];
     }
 
