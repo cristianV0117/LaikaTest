@@ -16,7 +16,7 @@ final class UserRepository implements Readable, Writetable
 
 	public function getOne(int $id): array
 	{
-		return [];
+		return DB::select('CALL get_one_user('.$id.')');
 	}
 
 	public function save(Request $request): array
