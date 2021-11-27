@@ -13,9 +13,11 @@ final class JsonResponse implements Response
         $this->responseStrcuture = [];
     }
 
-    public function response(string|array|null $response): array
+    public function response(int $status, bool $error, string|array|null $response, ?array $dependencies): array
     {
         return $this->responseStrcuture = [
+            "status"      => $status,
+            "error"       => $error,
             "message"     => $response
         ];
     }

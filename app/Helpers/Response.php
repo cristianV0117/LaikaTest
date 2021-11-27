@@ -4,5 +4,5 @@ namespace App\Helpers;
 
 interface Response
 {
-    public function response(string|array|null $response): array;
+    public function response(int $status, bool $error, string|array|null $response, ?array $dependencies): array;
 }

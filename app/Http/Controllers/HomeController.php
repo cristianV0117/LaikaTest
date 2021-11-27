@@ -16,8 +16,10 @@ final class HomeController extends Controller
 
     public function __invoke()
     {
-        return response()->json($this->response->response([
-            "saludo" => "hola mundo"
-        ]));
+        return response()->json($this->response->response(200, false, [
+            "over" => "LAIKA API APP",
+			"home" => "Bienvenido",
+            "version" => "1.0.1",
+        ], ['current' => '']), 200);
     }
 }

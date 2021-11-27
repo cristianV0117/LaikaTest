@@ -16,6 +16,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->when(\App\Http\Controllers\HomeController::class)
             ->needs(\App\Helpers\Response::class)
             ->give(\App\Helpers\JsonResponse::class);
+
+        // COUNTRIES //
+        $this->app->when(\App\Http\Controllers\Countries\IndexController::class)
+            ->needs(\App\Helpers\Response::class)
+            ->give(\App\Helpers\JsonResponse::class);
     }
 
     /**
