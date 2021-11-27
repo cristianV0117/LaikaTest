@@ -14,6 +14,7 @@ use App\Http\Controllers\Users\{
     UpdateController,
     DeleteController
 };
+use App\Http\Middleware\ApiMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,7 @@ Route::get('/api', function () {
 
 Route::get('v1', HomeController::class);
 
-Route::group(['prefix' => 'v1'], function () {
+Route::group(['prefix' => 'v1', 'middleware' => 'apiKey'], function () {
     Route::group(['prefix' => 'countries'], function () {
         Route::get('', IndexController::class);
         Route::get('/{id}', ShowController::class);

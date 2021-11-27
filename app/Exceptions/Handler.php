@@ -42,7 +42,8 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $e)
     {
-        if ($e instanceof Users\UserException
+        if ($e instanceof Users\UserException ||
+            $e instanceof ApiException
         ) {
             $classTemporally = new \ReflectionClass(get_class($e));
             $class = explode('\\', $classTemporally->getName());
