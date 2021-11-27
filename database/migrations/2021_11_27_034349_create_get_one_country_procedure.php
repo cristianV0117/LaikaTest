@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 
-class CreateGetAllCountriesProcedure extends Migration
+class CreateGetOneCountryProcedure extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,12 @@ class CreateGetAllCountriesProcedure extends Migration
      */
     public function up()
     {
-        $procedure = "DROP PROCEDURE IF EXISTS `get_all_countries`;
-            CREATE PROCEDURE `get_all_countries` ()
+        $procedure = "DROP PROCEDURE IF EXISTS `get_one_country`;
+            CREATE PROCEDURE `get_one_country` (IN idCountry int)
             BEGIN
-            SELECT * FROM countries;
+            SELECT * FROM countries WHERE id = idCountry;
             END;";
+  
         DB::unprepared($procedure);
     }
 

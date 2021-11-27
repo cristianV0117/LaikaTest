@@ -13,6 +13,6 @@ final class CountrieRepository implements Readable
 
     public function getOne(int $id): array
     {
-        return [];
+        return DB::select('CALL get_one_country('.$id.')');
     }
 }

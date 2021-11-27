@@ -1,10 +1,12 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Countries\IndexController;
+use App\Http\Controllers\Countries\{
+    IndexController,
+    ShowController
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +34,5 @@ Route::get('v1', HomeController::class);
 
 Route::group(['prefix' => 'v1'], function () {
     Route::get('/countries', IndexController::class);
+    Route::get('/countries/{id}', ShowController::class);
 });

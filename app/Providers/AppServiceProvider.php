@@ -13,6 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // HOME //
         $this->app->when(\App\Http\Controllers\HomeController::class)
             ->needs(\App\Helpers\Response::class)
             ->give(\App\Helpers\JsonResponse::class);
@@ -21,8 +22,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->when(\App\Http\Controllers\Countries\IndexController::class)
             ->needs(\App\Helpers\Response::class)
             ->give(\App\Helpers\JsonResponse::class);
+        $this->app->when(\App\Http\Controllers\Countries\ShowController::class)
+            ->needs(\App\Helpers\Response::class)
+            ->give(\App\Helpers\JsonResponse::class);
         // COUNTRIES REPOSITORY //
         $this->app->when(\App\Http\Controllers\Countries\IndexController::class)
+            ->needs(\App\Repositories\Readable::class)
+            ->give(\App\Repositories\CountrieRepository::class);
+        $this->app->when(\App\Http\Controllers\Countries\ShowController::class)
             ->needs(\App\Repositories\Readable::class)
             ->give(\App\Repositories\CountrieRepository::class);
     }
