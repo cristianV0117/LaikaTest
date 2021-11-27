@@ -7,10 +7,12 @@ final class JsonResponse implements Response
 {
 
     private $responseStrcuture;
+    private $api;
 
     public function __construct()
     {
         $this->responseStrcuture = [];
+        $this->api = $_ENV["API_ROUTE"];
     }
 
     public function response(int $status, bool $error, string|array|null $response, ?array $dependencies): array
@@ -18,7 +20,8 @@ final class JsonResponse implements Response
         return $this->responseStrcuture = [
             "status"      => $status,
             "error"       => $error,
-            "message"     => $response
+            "message"     => $response,
+            "current_url" => $this->api . $dependencies['current']
         ];
     }
 }

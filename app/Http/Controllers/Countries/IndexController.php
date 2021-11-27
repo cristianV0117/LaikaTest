@@ -8,10 +8,14 @@ use App\Helpers\Response;
 final class IndexController extends Controller
 {
     private $response;
+    private $dependencies;
 
     public function __construct(Response $response)
     {
         $this->response = $response;
+        $this->dependencies = [
+            "current" => 'countries/'
+        ];
     }
 
     public function __invoke()
@@ -22,7 +26,7 @@ final class IndexController extends Controller
             [
                 "hola"
             ],
-            null
+            $this->dependencies
         ), 200);
     }
 }
