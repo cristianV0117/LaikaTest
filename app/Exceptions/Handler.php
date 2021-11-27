@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -37,5 +38,22 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $e)
+    {
+        if ($e instanceof Users\UserException
+        ) {
+            $classTemporally = new \ReflectionClass(get_class($e));
+            $class = explode('\\', $classTemporally->getName());
+            $json = [
+                'status' => $e->getCode(),
+                'error'  => true,
+                'class'  => $class[2],
+                'message'=> $e->getMessage()
+            ];
+            return response()->json($json, $e->getCode());
+        }
+        return parent::render($request, $e);
     }
 }

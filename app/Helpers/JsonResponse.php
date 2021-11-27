@@ -12,16 +12,16 @@ final class JsonResponse implements Response
     public function __construct()
     {
         $this->responseStrcuture = [];
-        $this->api = $_ENV["API_ROUTE"];
+        $this->api = $_ENV['API_ROUTE'];
     }
 
-    public function response(int $status, bool $error, string|array|null $response, ?array $dependencies): array
+    public function response(int $status, bool $error, string|array|null $response, ?array $dependencies, ?int $id): array
     {
         return $this->responseStrcuture = [
             "status"      => $status,
             "error"       => $error,
             "message"     => $response,
-            "current_url" => $this->api . $dependencies['current']
+            "current_url" => $this->api . $dependencies['current'] . $id
         ];
     }
 }

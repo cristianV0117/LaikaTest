@@ -27,7 +27,8 @@ final class ShowController extends Controller
             200,
             false, 
             $this->repository->getOne($id),
-            $this->dependencies
+            $this->dependencies,
+            $id
         ), 200);
     }
 }

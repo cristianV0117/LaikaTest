@@ -4,7 +4,7 @@ namespace App\Repositories;
 use Illuminate\Support\Facades\DB;
 use App\Repositories\Readable;
 
-final class CountrieRepository implements Readable
+final class CountryRepository implements Readable
 {
     public function getAll(): array
     {

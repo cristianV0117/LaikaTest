@@ -27,7 +27,8 @@ final class IndexController extends Controller
             200,
             false, 
             $this->repository->getAll(),
-            $this->dependencies
+            $this->dependencies,
+            null
         ), 200);
     }
 }

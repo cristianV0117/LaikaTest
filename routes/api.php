@@ -7,6 +7,9 @@ use App\Http\Controllers\Countries\{
     IndexController,
     ShowController
 };
+use App\Http\Controllers\Users\{
+    StoreController
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +36,12 @@ Route::get('/api', function () {
 Route::get('v1', HomeController::class);
 
 Route::group(['prefix' => 'v1'], function () {
-    Route::get('/countries', IndexController::class);
-    Route::get('/countries/{id}', ShowController::class);
+    Route::group(['prefix' => 'countries'], function () {
+        Route::get('', IndexController::class);
+        Route::get('/{id}', ShowController::class);
+    });
+
+    Route::group(['prefix' => 'users'], function () {
+        Route::post('', StoreController::class);
+    });
 });

@@ -19,6 +19,6 @@ final class HomeController extends Controller
             "over" => "LAIKA API APP",
 			"home" => "Bienvenido",
             "version" => "1.0.1",
-        ], ['current' => '']), 200);
+        ], ['current' => ''], null), 200);
     }
 }
