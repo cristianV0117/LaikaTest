@@ -6,6 +6,7 @@ use App\Repositories\{Readable, Writetable};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 final class UserRepository implements Readable, Writetable
 {
 	
@@ -30,7 +31,7 @@ final class UserRepository implements Readable, Writetable
 			$data["second_last_name"],
 			$data["email"],
 			$data["cellphone"],
-			password_hash($data["password"], true),
+			Hash::make($data["password"]),
 			1,
 			$data["country_id"],
 			Carbon::now(),
@@ -48,6 +49,11 @@ final class UserRepository implements Readable, Writetable
 	{
 		$data = $request->all();
 		$user = DB::select('CALL get_one_user('.$id.')');
+
+		if (empty($user)) {
+			throw new UserException("No se encuentra ningún usuario", 404);
+		}
+
 		$response = DB::select('CALL update_user (?,?,?,?,?,?,?,?,?,?)', [
 			(!empty($data["user_name"])) ? $data["user_name"] : $user[0]->user_name,
 			(!empty($data["first_name"])) ? $data["first_name"] : $user[0]->first_name,

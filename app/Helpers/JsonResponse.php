@@ -15,7 +15,7 @@ final class JsonResponse implements Response
         $this->api = $_ENV['API_ROUTE'];
     }
 
-    public function response(int $status, bool $error, string|array|null $response, ?array $dependencies, ?int $id): array
+    public function response(int $status, bool $error,  $response, ?array $dependencies, ?int $id): array
     {
         return $this->responseStrcuture = [
             "status"      => $status,
