@@ -61,6 +61,17 @@ Se implementaron pruebas unitarias con PHPUNIT el cual viene intregado a laravel
 * GitHub
 * Heroku
 
+## API EN PRODUCCIÓN CON HEROKU
+Se subió la API a produccion utilizando el sistema de despliegue de HEROKU
+* http://laika-api-app.herokuapp.com/api/v1
+
+## ¿DESEAS PROBAR LA API EN POSTMAN?
+https://www.getpostman.com/collections/74de7a573a09942891fb se debe cambiar el enviorement de LAIKA-DOMAIN a http://laika-api-app.herokuapp.com/api/v1
+
+## SOBRE MÍ
+Espero con ancias ser parte de Laika y aportar mis conocimientos y aptitudes y poder ser un pilar en el en ese puente del crecimiento como empresa.
+Actualmente estudio sobre **DDD** **ARQUITECTURA HEXAGONAL** **AWS** **DOCKER** y **FLASK CON PYTHON** quiero fortalecerme como profesional y siento que Laika es la oportunidad que necesito, muchas gracias por la oportunidad :grinning:
+
 
 
 
