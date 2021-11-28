@@ -26,6 +26,7 @@ La tabla **countries** funciona a traves de un seeder, ejecutar el comando **php
 ## PATRON DE DISEÑO & ARQUITECTURA DE LA APLICACION
 * Patron de diseño
 Para la arquitectura se implementó conceptos de **ADR - (ACCION - DOMINIO - RESPUESTA)** para no depender de la arquitectura por defecto de laravel la cual es **MVC**, utilizando ADR permite que el codigo se atomice de una mayor manera centralizando responsabilidades a cada una de las clases y así siguiendo el principio de responsabilidad unica, esto se implementa en dichas clases que cumplen mas de una responsabilidad, como controladores, modelos de dominio, repositorios entre otros.
+Se implementó normas **REST** para el API incluyendo normas **HATEOAS** para darle navegabilidad a los recursos
 * Arquitectura
 El concepto de responsabilidad unica se implementa en el patron ADR causando que, por ejemplo los controladore solo tengan una sola responsabilidad y no adjuntar metodos por verbo http en un solo controlador.<br>
 <img src='https://github.com/cristianV0117/docs/blob/main/arquitectura.PNG' alt='linkedin' height='250'><br/>
@@ -40,10 +41,27 @@ Las normas SOLID son muy importantes para mantener un codigo limpio y bien estru
 <img src='https://github.com/cristianV0117/docs/blob/main/solid2.PNG' alt='linkedin' height='150'><br/>
 * SEGREGACION DE INTERFACES
 <br>Con la segregacion de interfaces que va de la mano con el principio de inversionde dependencias, armamos nuestras interfcaes para que sus metodos sean definidos y propios de la interfaz y así no tener el error de implementar interfaces en clases que no necesita y se obligan a usar metodos inncecesario.<br>
-<img src='https://github.com/cristianV0117/docs/blob/main/solid3.PNG' alt='linkedin' height='150'><br/>
+<img src='https://github.com/cristianV0117/docs/blob/main/solid3.PNG' alt='linkedin' height='170'><br/>
 
 ## PRUEBAS UNITARIAS
-Se implementaron pruebas unitarias con PHPUNIT el cual viene intregado a laravel, hay 17 pruebas las cuales se enfocan en los controladores endpoints de paises, usuraios y autorizaciones con API KEY.
+Se implementaron pruebas unitarias con PHPUNIT el cual viene intregado a laravel, hay 17 pruebas las cuales se enfocan en los controladores endpoints de paises, usuraios y autorizaciones con API KEY. Para probar los unit test se ejecuta el comando **php artisan test**
+
+## OBJETIVOS CUMPLIDOS
+* Crear todos los caminos para el mantenimiento de la tabla relacional no paramétrica usando consumo directo de la base de datos sin ORM a través de Stored Procedures.
+* Crear pruebas unitarias a los EndPoints logrando una cobertura de al menos el 80%. Y demostrar dicha cobertura.
+* Crear un middleware donde se verifique que exista y tenga valor un header “api-key-laika”.
+* Ningún Endpoint deberá demorar más de 250 milisegundos en dar respuesta.
+* Dentro de las pruebas unitarias se deberá demostrar que se realizan las validaciones requeridas para garantizar la calidad de la data almacenada. (Ejemplo – Si pides un teléfono que solo sean números, si pides un Email que se valide el formato adecuado).
+
+## HERRAMIENTAS DE DESARROLLO UTILIZADAS
+* Laravel v - 8.73.2
+* postman
+* MySQL workbench
+* Git
+* GitHub
+* Heroku
+
+
 
 
 
