@@ -1,5 +1,5 @@
 # LAIKA - API :smile:
-## Cristian Camilo Vasquez Osorio - laika
+## Cristian Camilo Vasquez Osorio - Laika
 ### Prueba realizada del 26/11/2021 al 28/11/2021
 
 Bienvenido. Esta es la prueba técnica para validar mis conocimientos y fortalezas en el mundo del Backend utilizando laravel, demostrando así mi capacidad de arquitectura de codigo, patrones de diseño, clean code, normas SOLID, REST y demás para el mundo de Laika.
@@ -24,10 +24,10 @@ Este comando también crea los procedimientos almacenados que tendrán interacci
 La tabla **countries** funciona a través de un seeder, ejecutar el comando **php artisan db:seed** para llenar dicha tabla automaticamente.
 
 ## PATRÓN DE DISEÑO Y ARQUITECTURA DE LA APLICACIÓN
-* Patrón de diseño
+* Patrón de diseño:<br>
 Para la arquitectura se implementaron conceptos de **ADR - (ACCION - DOMINIO - RESPUESTA)** para no depender de la arquitectura por defecto de laravel, la cual es **MVC**. Utilizando ADR permite que el código se atomice de una mayor manera, centralizando responsabilidades a cada una de las clases, así siguiendo el principio de responsabilidad unica, que se implementa en dichas clases que cumplen más de una responsabilidad, como controladores, modelos de dominio, repositorios entre otros.
 Se implementaron normas **REST** para el API, incluyendo normas **HATEOAS** para darle navegabilidad a los recursos
-* Arquitectura
+* Arquitectura:<br>
 El concepto de responsabilidad única se implementa en el patrón ADR, causando que, por ejemplo, los controladores sólo tengan una responsabilidad y no adjuntar métodos por verbo http en un solo controlador.<br>
 <img src='https://github.com/cristianV0117/docs/blob/main/arquitectura.PNG' alt='linkedin' height='250'><br/>
 
